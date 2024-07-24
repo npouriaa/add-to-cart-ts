@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/src/assets/typescript.svg">
-  <title>Add to cart with TS</title>
-  <link rel="stylesheet" href="/src/style.css">
-  <script type="module" src="/src/main.ts"></script>
-</head>
-<body>
-  <div class="container">
-    <div class="cards">
-      <div class="card">
-        <img src="/src/assets/1.webp" alt="">
-        <h3>Nike shoes</h3>
-        <h4>1200$</h4>
-        <button>add to cart</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/src/assets/typescript.svg" />
+    <title>Add to cart with TS</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cards">
+        <div class="card">
+          <img src="/src/assets/1.webp" alt="item-image" />
+          <h3>Nike shoes</h3>
+          <h4>1200$</h4>
+          <button>add to cart</button>
+        </div>
+        <div class="card">
+          <img src="/src/assets/1.webp" alt="item-image" />
+          <h3 class="card-name">Nike shoes</h3>
+          <h4 class="card-price">1200$</h4>
+          <button class="add-to-cart-btn">add to cart</button>
+        </div>
+      </div>
+      <div class="cart">
+        <h2>Cart</h2>
+        <div class="cart-items">
+          <div class="cart-item">
+            <img
+              class="cart-item-image"
+              src="/src/assets/1.webp"
+              alt="item-image"
+            />
+            <p class="cart-item-name">Nike shoes</p>
+            <p class="cart-item-price">1200$</p>
+            <div class="cart-item-counter">
+              <button>+</button>
+              <p>1</p>
+              <button>-</button>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              class="cart-item-image"
+              src="/src/assets/1.webp"
+              alt="item-image"
+            />
+            <p class="cart-item-name">Nike shoes</p>
+            <p class="cart-item-price">1200$</p>
+            <div class="cart-item-counter">
+              <button>+</button>
+              <p>1</p>
+              <button>-</button>
+            </div>
+          </div>
+        </div>
+        <h2>Total Amount : 0$</h2>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
