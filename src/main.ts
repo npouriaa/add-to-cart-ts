@@ -47,7 +47,7 @@ function createshopCardItem(item: Item) {
   const cardName = document.createElement("h3");
   cardName.textContent = item.name;
   const cardPrice = document.createElement("h4");
-  cardPrice.textContent = `${item.price}`;
+  cardPrice.textContent = `${item.price}$`;
   const addToCartBtn = document.createElement("button");
   addToCartBtn.className = "add-to-cart-btn";
   addToCartBtn.textContent = "Add to cart";
@@ -85,7 +85,7 @@ function addToCart(id: number) {
   if (itemToAdd) {
     const lsItem = findItem(loadCartItems(), itemToAdd?.id);
     if (lsItem) {
-      alert("already exist");
+      alert(`${lsItem.name} already exist in your cart.`);
     } else {
       itemToAdd.count = 1;
       saveItem(itemToAdd);
