@@ -60,7 +60,7 @@ function createshopCardItem(item: Item) {
 }
 
 function saveItem(item: Item, op?: string) {
-  const lsCartItems = cartItems;
+  const lsCartItems = loadCartItems();
   const existingItemIndex = lsCartItems.findIndex((i) => i.id === item.id);
   if (existingItemIndex !== -1) {
     op === "add"
@@ -96,7 +96,7 @@ function addToCart(id: number) {
 }
 
 function removeCartItem(id: number, itemToRemove: HTMLDivElement) {
-  let selectedItem = findItem(cartItems, id);
+  let selectedItem = findItem(loadCartItems(), id);
   if (selectedItem) {
     const updateLSArray: Item[] = loadCartItems().filter(
       (item) => item.id !== selectedItem.id
