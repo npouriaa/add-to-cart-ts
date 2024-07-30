@@ -60,7 +60,7 @@ function createshopCardItem(item: Item) {
 }
 
 function saveItem(item: Item, op?: string) {
-  const lsCartItems = loadCartItems();
+  const lsCartItems = cartItems;
   const existingItemIndex = lsCartItems.findIndex((i) => i.id === item.id);
   if (existingItemIndex !== -1) {
     op === "add"
@@ -95,17 +95,6 @@ function addToCart(id: number) {
   }
 }
 
-function removeCartItem(id: number, itemToRemove: HTMLDivElement) {
-  let selectedItem = findItem(loadCartItems(), id);
-  if (selectedItem) {
-    const updateLSArray: Item[] = loadCartItems().filter(
-      (item) => item.id !== selectedItem.id
-    );
-    localStorage.setItem("CartItems", JSON.stringify(updateLSArray));
-    cartItemsElement?.removeChild(itemToRemove);
-    updateTotalAmount();
-  }
-}
 
 function createCartElement(item: Item) {
   const cartItemDiv = document.createElement("div");
@@ -129,6 +118,7 @@ function createCartElement(item: Item) {
 
   let countNumber: number = item.count;
 
+  // Decrease cart item count function
   const decreaseCountBtn = document.createElement("button");
   decreaseCountBtn.addEventListener("click", () => {
     let selectedItem = findItem(cartItems, item.id);
@@ -141,6 +131,7 @@ function createCartElement(item: Item) {
   });
   decreaseCountBtn.textContent = "-";
 
+  // Increase cart item count function
   const increaseCountBtn = document.createElement("button");
   increaseCountBtn.addEventListener("click", () => {
     let itemToAdd = findItem(loadCartItems(), item.id);
@@ -154,10 +145,19 @@ function createCartElement(item: Item) {
   increaseCountBtn.textContent = "+";
 
   const removeBtn = document.createElement("button");
+  // Remove cart item function
   removeBtn.addEventListener("click", () => {
-    removeCartItem(item.id, cartItemDiv);
+    let selectedItem = findItem(cartItems, item.id);
+    if (selectedItem) {
+      const updateLSArray: Item[] = loadCartItems().filter(
+        (item) => item.id !== selectedItem.id
+      );
+      localStorage.setItem("CartItems", JSON.stringify(updateLSArray));
+      cartItemsElement?.removeChild(cartItemDiv);
+      updateTotalAmount();
+    }
   });
-  removeBtn.textContent = "Remove";
+  removeBtn.textContent = "Remove"
 
   const count = document.createElement("p");
   count.textContent = `${item.count}`;
