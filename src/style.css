@@ -14,12 +14,15 @@ button {
 }
 
 .container {
+  width: 100vw;
   padding: 2rem;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-.cards {
-  width: 50%;
+.cards {  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,10 +30,14 @@ button {
   flex-direction: column;
 }
 
+.add-to-cart-btn {
+  padding: .4rem;
+}
+
 .card {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .1);
-  height: 20rem;
-  width: 25rem;
+  height: 16rem;
+  width: 16rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -38,11 +45,11 @@ button {
 }
 
 .card img {
-  height: 10rem;
+  height: 6rem;
 }
 
 .cart {
-  width: 50%;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;

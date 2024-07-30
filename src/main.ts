@@ -60,7 +60,7 @@ function createshopCardItem(item: Item) {
 }
 
 function saveItem(item: Item, op?: string) {
-  const lsCartItems = cartItems;
+  const lsCartItems = loadCartItems();
   const existingItemIndex = lsCartItems.findIndex((i) => i.id === item.id);
   if (existingItemIndex !== -1) {
     op === "add"
@@ -121,7 +121,7 @@ function createCartElement(item: Item) {
   // Decrease cart item count function
   const decreaseCountBtn = document.createElement("button");
   decreaseCountBtn.addEventListener("click", () => {
-    let selectedItem = findItem(cartItems, item.id);
+    let selectedItem = findItem(loadCartItems(), item.id);
     if (selectedItem && selectedItem.count > 1) {
       saveItem(selectedItem, "minus");
       countNumber -= 1;
@@ -147,7 +147,7 @@ function createCartElement(item: Item) {
   const removeBtn = document.createElement("button");
   // Remove cart item function
   removeBtn.addEventListener("click", () => {
-    let selectedItem = findItem(cartItems, item.id);
+    let selectedItem = findItem(loadCartItems(), item.id);
     if (selectedItem) {
       const updateLSArray: Item[] = loadCartItems().filter(
         (item) => item.id !== selectedItem.id
